@@ -19,7 +19,7 @@ Here is a summary of the projects currently available in this repository:
 | :--- | :--- | :---: |
 | **[Libft](./libft)** | My first custom C library. A recreation of various standard C library functions (like `strlen`, `atoi`, etc.) and additional utility functions for linked lists. | ✅ Finished |
 | **[ft_printf](./printf)** | A custom implementation of the famous C standard library function `printf`. It handles various formatting flags and conversions. | ✅ Finished |
-| **[Project_Name](./project_path)** | *Brief description of your next project goes here.* | 🚧 In Progress |
+| **[push_swap](./push_swap)** | 🚧 In Progress |
 
 > **Note:** As I progress through the curriculum, I will continuously update this repository with new projects.
 
