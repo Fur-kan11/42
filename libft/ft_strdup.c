@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mehozer <mehozer@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/05 00:32:07 by mehozer           #+#    #+#             */
-/*   Updated: 2026/02/20 02:20:49 by mehozer          ###   ########.fr       */
+/*   Created: 2026/02/09 20:48:39 by mehozer           #+#    #+#             */
+/*   Updated: 2026/02/20 02:16:06 by mehozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
-{
-	unsigned int	i;
+#include "libft.h"
 
-	i = 0;
-	while (i < n && s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	if (i < n)
-		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	return (0);
+char	*ft_strdup(const char *s1)
+{
+	char	*dest;
+	size_t	len;
+
+	len = ft_strlen(s1);
+	dest = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dest)
+		return (NULL);
+	ft_strlcpy(dest, s1, len + 1);
+	return (dest);
 }

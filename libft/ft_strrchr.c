@@ -3,34 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mehozer <mehozer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mehozer <mehozer@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/05 00:26:18 by mehozer           #+#    #+#             */
-/*   Updated: 2026/02/05 00:31:41 by mehozer          ###   ########.fr       */
+/*   Created: 2026/02/14 06:09:56 by mehozer           #+#    #+#             */
+/*   Updated: 2026/02/20 02:21:12 by mehozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strrchr(const char *s, int c)
+#include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
 {
-    int i = 0;
+	int		i;
+	char	*last;
 
-    while (s[i])
-        i++;
-
-    if ((char)c == '\0')
-        return (char *)&s[i];
-
-    while (i >= 0)
-    {
-        if (s[i] == (char)c)
-            return (char *)&s[i];
-        i--;
-    }
-    return 0;
-}
-#include <stdio.h>
-
-int main(void)
-{
-    printf("%s\n", ft_strrchr("banana", 'n'));
+	i = 0;
+	last = NULL;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			last = (char *)&s[i];
+		i++;
+	}
+	if ((char)c == '\0')
+		return ((char *)&s[i]);
+	return (last);
 }

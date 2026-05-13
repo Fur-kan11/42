@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mehozer <mehozer@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/05 00:32:07 by mehozer           #+#    #+#             */
-/*   Updated: 2026/02/20 02:20:49 by mehozer          ###   ########.fr       */
+/*   Created: 2026/02/14 07:36:30 by mehozer           #+#    #+#             */
+/*   Updated: 2026/02/20 02:15:44 by mehozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
+#include "libft.h"
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
+	char			*res;
 	unsigned int	i;
 
+	if (!s || !f)
+		return (NULL);
+	res = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!res)
+		return (NULL);
 	i = 0;
-	while (i < n && s1[i] && s2[i])
+	while (s[i])
 	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		res[i] = f(i, s[i]);
 		i++;
 	}
-	if (i < n)
-		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	return (0);
+	res[i] = '\0';
+	return (res);
 }

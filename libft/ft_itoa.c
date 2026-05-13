@@ -1,42 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mehozer <mehozer@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/17 23:07:28 by mehozer           #+#    #+#             */
-/*   Updated: 2026/02/20 02:16:32 by mehozer          ###   ########.fr       */
+/*   Created: 2026/02/14 07:12:04 by mehozer           #+#    #+#             */
+/*   Updated: 2026/02/20 02:19:20 by mehozer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+static int	num_len(long n)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
-	size_t				i;
+	int	len;
 
-	d = (unsigned char *)dest;
-	s = (const unsigned char *)src;
-	if (!dest && !src)
+	len = 0;
+	if (n <= 0)
+	{
+		len++;
+		n = -n;
+	}
+	while (n > 0)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+	long	num;
+	int		len;
+
+	num = n;
+	len = num_len(num);
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
-	if (d > s)
+	str[len] = '\0';
+	if (num < 0)
 	{
-		while (n--)
-		{
-			d[n] = s[n];
-		}
+		str[0] = '-';
+		num = -num;
 	}
-	else
+	while (len-- > 0 && str[len] != '-')
 	{
-		i = 0;
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
+		str[len] = (num % 10) + '0';
+		num /= 10;
 	}
-	return (dest);
+	return (str);
 }
